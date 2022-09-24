@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"E:\\UE5\\CyberpunkSyndicates\\Source\\CyberpunkSyndicates\\CyberpunkSyndicates.Build.cs",
+		"E:\\UE5\\CyberpunkSyndicates\\Source\\CyberpunkSyndicates.Target.cs",
+		"E:\\UE5\\CyberpunkSyndicates\\Source\\CyberpunkSyndicatesEditor.Target.cs"
+	],
+	"EngineVersion": "5.0.3"
+}

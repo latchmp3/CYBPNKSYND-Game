@@ -1,0 +1,15 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\inc\\cyberpunksyndicates\\hitboxactor.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\cyberpunksyndicateseditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\development\\cyberpunksyndicates\\definitions.cyberpunksyndicates.h",
+            "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\hitboxactor.h",
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\inc\\cyberpunksyndicates\\hitboxactor.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

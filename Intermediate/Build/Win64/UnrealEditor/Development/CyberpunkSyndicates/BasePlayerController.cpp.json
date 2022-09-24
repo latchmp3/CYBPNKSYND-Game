@@ -1,0 +1,15 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\baseplayercontroller.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\cyberpunksyndicateseditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\development\\cyberpunksyndicates\\definitions.cyberpunksyndicates.h",
+            "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\baseplayercontroller.h",
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\inc\\cyberpunksyndicates\\baseplayercontroller.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

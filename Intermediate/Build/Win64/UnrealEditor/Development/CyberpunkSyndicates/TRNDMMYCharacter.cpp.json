@@ -1,0 +1,23 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\trndmmycharacter.cpp",
+        "ProvidedModule": "",
+        "PCH": "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\cyberpunksyndicateseditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\development\\cyberpunksyndicates\\definitions.cyberpunksyndicates.h",
+            "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\trndmmycharacter.h",
+            "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\cyberpunksyndicatescharacter.h",
+            "e:\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "e:\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "e:\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\charactermovementreplication.generated.h",
+            "e:\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "e:\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\rootmotionsource.generated.h",
+            "e:\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\character.generated.h",
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\inc\\cyberpunksyndicates\\cyberpunksyndicatescharacter.generated.h",
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\inc\\cyberpunksyndicates\\trndmmycharacter.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
