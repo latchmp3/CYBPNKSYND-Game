@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Large files - 50 MB or higher
+UE5.vcxproj
+
+# Other files
+Saved/Crashes/
+
 # User-specific files
 *.rsuser
 *.suo
@@ -361,6 +367,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-
-# Large files - 50 MB or higher
-UE5.vcxproj
