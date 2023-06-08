@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BaseGameInstance.h"
 #include "GameFramework/Character.h"
 #include "CyberpunkSyndicatesCharacter.generated.h"
 
@@ -162,8 +163,26 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void StartCommand(FString _commandName);
 
+	UFUNCTION(BlueprintCallable)
+	void WinRound();
+
+	UFUNCTION(BlueprintCallable)
+	void WinMatch();
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void AddInputIconToScreen(int _iconIndex, bool _shouldAddInput = true);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void NotifyRoundStart();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void NotifyRoundEnd();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void UpdateHUDRoundIcons();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayDamageSoundEffect();
 
 	//the array of inputs the player controlling this character has performed
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
@@ -171,6 +190,10 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	TArray<FCommand> characterCommands;
+
+	//Is character conntrolled by P1?
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Stack")
+	bool isPlayerOne;
 
 	// has player released directional input
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Stack")
@@ -180,16 +203,15 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
 	float maxDistanceApart;
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player References")
 	ACyberpunkSyndicatesCharacter* otherPlayer;
 
-	//Is character conntrolled by P1?
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input Stack")
-	bool isPlayerOne;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hitbox")
 	AActor* hurtbox;
+
+	//current class of character
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character Details")
+	ECharacterClass characterClass;
 
 	//direction char is moving or pressing
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
@@ -198,6 +220,10 @@ protected:
 	//is player able to move?
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	bool canMove;
+
+	//is the character crouching?
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+	bool isCrouching;
 
 	//amount of time character is in - hitstun, blockstun, etc.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
@@ -229,6 +255,13 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 	float playerHealth;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Logic")
+	int roundsWon;
+
+	//can player use attacks
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attacks")
+	bool canAttack;
+
 	// Was Left Punch (1) used 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attacks")
 	bool lpPressed;
@@ -252,6 +285,23 @@ protected:
 	//Attack landed?
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attacks")
 	bool hasAttackHit;
+
+	//Throw landed?
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attacks")
+	bool hasLandedThrow;
+
+	//is character ready to play entrance anim?
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
+	bool isReadyForEntrance;
+
+	// determines loser of round 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
+	bool hasLostRound;
+
+	// determines winner of round 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animations")
+	bool hasWonMatch;
+
 
 protected:
 	// APawn interface

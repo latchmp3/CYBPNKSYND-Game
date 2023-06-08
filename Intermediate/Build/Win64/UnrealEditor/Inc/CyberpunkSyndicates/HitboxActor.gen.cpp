@@ -41,6 +41,7 @@ void EmptyLinkFunctionForGeneratedCodeHitboxActor() {}
 		{ "EHitboxEnum::HB_PROXIMITY", (int64)EHitboxEnum::HB_PROXIMITY },
 		{ "EHitboxEnum::HB_ACTIVE", (int64)EHitboxEnum::HB_ACTIVE },
 		{ "EHitboxEnum::HB_HURTBOX", (int64)EHitboxEnum::HB_HURTBOX },
+		{ "EHitboxEnum::HB_THROW", (int64)EHitboxEnum::HB_THROW },
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_CyberpunkSyndicates_EHitboxEnum_Statics::Enum_MetaDataParams[] = {
@@ -51,6 +52,8 @@ void EmptyLinkFunctionForGeneratedCodeHitboxActor() {}
 		{ "HB_HURTBOX.Name", "EHitboxEnum::HB_HURTBOX" },
 		{ "HB_PROXIMITY.DisplayName", "Proximity" },
 		{ "HB_PROXIMITY.Name", "EHitboxEnum::HB_PROXIMITY" },
+		{ "HB_THROW.DisplayName", "Throw" },
+		{ "HB_THROW.Name", "EHitboxEnum::HB_THROW" },
 		{ "ModuleRelativePath", "HitboxActor.h" },
 	};
 #endif
@@ -185,7 +188,7 @@ void EmptyLinkFunctionForGeneratedCodeHitboxActor() {}
 		{ "ToolTip", "The hitbox enum instance." },
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_AHitboxActor_Statics::NewProp_hitboxtype = { "hitboxtype", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AHitboxActor, hitboxtype), Z_Construct_UEnum_CyberpunkSyndicates_EHitboxEnum, METADATA_PARAMS(Z_Construct_UClass_AHitboxActor_Statics::NewProp_hitboxtype_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AHitboxActor_Statics::NewProp_hitboxtype_MetaData)) }; // 2443118065
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_AHitboxActor_Statics::NewProp_hitboxtype = { "hitboxtype", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AHitboxActor, hitboxtype), Z_Construct_UEnum_CyberpunkSyndicates_EHitboxEnum, METADATA_PARAMS(Z_Construct_UClass_AHitboxActor_Statics::NewProp_hitboxtype_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AHitboxActor_Statics::NewProp_hitboxtype_MetaData)) }; // 3065532037
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AHitboxActor_Statics::NewProp_hitboxLocation_MetaData[] = {
 		{ "Category", "Hitbox" },
@@ -242,12 +245,12 @@ void EmptyLinkFunctionForGeneratedCodeHitboxActor() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_Statics::EnumInfo[] = {
-		{ EHitboxEnum_StaticEnum, TEXT("EHitboxEnum"), &Z_Registration_Info_UEnum_EHitboxEnum, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2443118065U) },
+		{ EHitboxEnum_StaticEnum, TEXT("EHitboxEnum"), &Z_Registration_Info_UEnum_EHitboxEnum, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3065532037U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AHitboxActor, AHitboxActor::StaticClass, TEXT("AHitboxActor"), &Z_Registration_Info_UClass_AHitboxActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHitboxActor), 1522980215U) },
+		{ Z_Construct_UClass_AHitboxActor, AHitboxActor::StaticClass, TEXT("AHitboxActor"), &Z_Registration_Info_UClass_AHitboxActor, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AHitboxActor), 3797468220U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_2709849148(TEXT("/Script/CyberpunkSyndicates"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_4117288148(TEXT("/Script/CyberpunkSyndicates"),
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_HitboxActor_h_Statics::EnumInfo));

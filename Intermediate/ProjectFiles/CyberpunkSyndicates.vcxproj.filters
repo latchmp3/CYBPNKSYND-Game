@@ -83,5 +83,6 @@
     <ClInclude Include="..\..\Source\CyberpunkSyndicates\TRNDMMYCharacter.h">
       <Filter>Source\CyberpunkSyndicates</Filter>
     </ClInclude>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

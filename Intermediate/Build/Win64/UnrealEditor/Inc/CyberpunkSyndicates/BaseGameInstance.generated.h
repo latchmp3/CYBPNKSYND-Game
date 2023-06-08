@@ -90,7 +90,7 @@ template<> CYBERPUNKSYNDICATES_API UClass* StaticClass<class UBaseGameInstance>(
 
 
 #define FOREACH_ENUM_ECHARACTERCLASS(op) \
-	op(ECharacterClass::VE_TRNDMMY) 
+	op(ECharacterClass::E_TRNDMMY) 
 
 enum class ECharacterClass : uint8;
 template<> CYBERPUNKSYNDICATES_API UEnum* StaticEnum<ECharacterClass>();

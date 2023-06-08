@@ -1,5 +1,5 @@
 {
-    "Version": "1.1",
+    "Version": "1.2",
     "Data": {
         "Source": "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\inc\\cyberpunksyndicates\\cyberpunksyndicatesgamemode.gen.cpp",
         "ProvidedModule": "",
@@ -12,6 +12,8 @@
             "e:\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
             "e:\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
             "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\cyberpunksyndicatescharacter.h",
+            "e:\\ue5\\cyberpunksyndicates\\source\\cyberpunksyndicates\\basegameinstance.h",
+            "e:\\ue5\\cyberpunksyndicates\\intermediate\\build\\win64\\unrealeditor\\inc\\cyberpunksyndicates\\basegameinstance.generated.h",
             "e:\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
             "e:\\epic games\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
             "e:\\epic games\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\charactermovementreplication.generated.h",

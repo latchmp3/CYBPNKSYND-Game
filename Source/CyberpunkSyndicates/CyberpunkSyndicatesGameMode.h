@@ -20,6 +20,18 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player References")
 	ACyberpunkSyndicatesCharacter* player2;
+
+	//default round timer for each round
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode Settings")
+	float roundTime;
+
+	//number of rounds in set
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode Settings")
+	int numRounds;
+
+	//start timer countdown
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameMode Settings")
+	bool isRoundTimerActive;
 };
 
 

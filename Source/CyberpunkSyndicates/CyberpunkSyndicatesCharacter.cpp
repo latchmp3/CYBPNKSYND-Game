@@ -2,7 +2,6 @@
 
 #include "CyberpunkSyndicatesCharacter.h"
 #include "CyberpunkSyndicatesGameMode.h"
-#include "BaseGameInstance.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -58,9 +57,13 @@ ACyberpunkSyndicatesCharacter::ACyberpunkSyndicatesCharacter()
 	isFlipped = false;
 	transform = FTransform();
 	scale = FVector(0.0f, 0.0f, 0.0f);
-	maxDistanceApart = 130.0f;
-	characterState = ECharacterState::VE_Standing;
+	maxDistanceApart = 800.f;
 	gravityScale = GetCharacterMovement()->GravityScale;
+
+	characterState = ECharacterState::VE_Standing;
+	characterClass = ECharacterClass::E_TRNDMMY;
+
+	roundsWon = 0;
 
 	lpPressed = false;
 	rpPressed = false;
@@ -70,7 +73,16 @@ ACyberpunkSyndicatesCharacter::ACyberpunkSyndicatesCharacter()
 	isPlayerOne = false;
 	wasBlitzUsed = false;
 	hasAttackHit = false;
+	hasLandedThrow = false; 
+
 	canMove = false;
+	canAttack = false;
+
+	isCrouching = false;
+
+	isReadyForEntrance = false;
+	hasLostRound = false;
+	hasWonMatch = false;
 
 	stunTime = 0.0f;
 	removeInputFromBufferTime = 1.4f;
@@ -147,7 +159,7 @@ void ACyberpunkSyndicatesCharacter::MoveForward(float Value)
 	{
 		if (baseGameInstance->isDeviceShared)
 		{
-			if (canMove && characterState != ECharacterState::VE_Crouching && characterState != ECharacterState::VE_Rising && characterState != ECharacterState::VE_Block)
+			if (canMove && !isCrouching || characterState != ECharacterState::VE_Crouching && characterState != ECharacterState::VE_HitStun && characterState != ECharacterState::VE_Block)
 			{
 				if (characterState != ECharacterState::VE_Jumping && characterState != ECharacterState::VE_Launched)
 				{
@@ -186,7 +198,7 @@ void ACyberpunkSyndicatesCharacter::MoveForward(float Value)
 					AddMovementInput(FVector(0.0f, 1.0f, 0.0f), Value);
 				}
 			}
-			else if (canMove && characterState == ECharacterState::VE_Crouching)
+			else if (canMove && isCrouching || characterState == ECharacterState::VE_Crouching)
 			{
 				if (Value > 0.01f)
 				{
@@ -213,7 +225,7 @@ void ACyberpunkSyndicatesCharacter::MoveForwardController(float Value)
 	{
 		if (!baseGameInstance->isDeviceShared)
 		{
-			if (canMove && characterState != ECharacterState::VE_Crouching && characterState != ECharacterState::VE_Rising && characterState != ECharacterState::VE_Block)
+			if (canMove && isCrouching || characterState != ECharacterState::VE_Crouching && characterState != ECharacterState::VE_HitStun && characterState != ECharacterState::VE_Block)
 			{
 				if (characterState != ECharacterState::VE_Jumping && characterState != ECharacterState::VE_Launched)
 				{
@@ -252,7 +264,7 @@ void ACyberpunkSyndicatesCharacter::MoveForwardController(float Value)
 					AddMovementInput(FVector(0.0f, 1.0f, 0.0f), Value);
 				}
 			}
-			else if (canMove && characterState == ECharacterState::VE_Crouching)
+			else if (canMove && isCrouching || characterState == ECharacterState::VE_Crouching)
 			{
 				if (Value > 0.20f)
 				{
@@ -285,7 +297,7 @@ void ACyberpunkSyndicatesCharacter::StopBlocking()
 
 void ACyberpunkSyndicatesCharacter::Jump()
 {
-	if (canMove)
+	if (canMove && characterState != ECharacterState::VE_HitStun)
 	{
 		if (characterState == ECharacterState::VE_Back)
 		{
@@ -321,49 +333,69 @@ void ACyberpunkSyndicatesCharacter::Landed(const FHitResult& Hit)
 
 void ACyberpunkSyndicatesCharacter::StartCrouch()
 {
-	characterState = ECharacterState::VE_Crouching;
-	AddInputIconToScreen(6, hasReleasedAxisInput);
+	if (canMove && characterState != ECharacterState::VE_HitStun)
+	{
+		isCrouching = true;
+		characterState = ECharacterState::VE_Crouching;
+		AddInputIconToScreen(6, hasReleasedAxisInput);
+	}
 }
 
 void ACyberpunkSyndicatesCharacter::StopCrouch()
 {
+	isCrouching = false;
 	characterState = ECharacterState::VE_Standing;
 }
 
 void ACyberpunkSyndicatesCharacter::leftPunch()
 {
-	lpPressed = true;
-	AddInputIconToScreen(0, hasReleasedAxisInput);
+	if (canAttack && characterState != ECharacterState::VE_HitStun)
+	{
+		lpPressed = true;
+		AddInputIconToScreen(0, hasReleasedAxisInput);
+	}
 }
 
 void ACyberpunkSyndicatesCharacter::rightPunch()
 {
-	rpPressed = true;
-	AddInputIconToScreen(1, hasReleasedAxisInput);
+	if (canAttack && characterState != ECharacterState::VE_HitStun)
+	{
+		rpPressed = true;
+		AddInputIconToScreen(1, hasReleasedAxisInput);
+	}
 }
 
 void ACyberpunkSyndicatesCharacter::leftKick()
 {
-	lkPressed = true;
-	AddInputIconToScreen(2, hasReleasedAxisInput);
+	if (canAttack && characterState != ECharacterState::VE_HitStun)
+	{
+		lkPressed = true;
+		AddInputIconToScreen(2, hasReleasedAxisInput);
+	}
 }
 
 void ACyberpunkSyndicatesCharacter::rightKick()
 {
-	rkPressed = true;
-	AddInputIconToScreen(3, hasReleasedAxisInput);
+	if (canAttack && characterState != ECharacterState::VE_HitStun)
+	{
+		rkPressed = true;
+		AddInputIconToScreen(3, hasReleasedAxisInput);
+	}
 }
 
 void ACyberpunkSyndicatesCharacter::blitzAttack()
 {
-	wasBlitzUsed = true;
-	AddInputIconToScreen(4, hasReleasedAxisInput);
+	if (canAttack && characterState != ECharacterState::VE_HitStun)
+	{
+		wasBlitzUsed = true;
+		AddInputIconToScreen(4, hasReleasedAxisInput);
+	}
 }
 
 //auto blocking functionality
 void ACyberpunkSyndicatesCharacter::CollidedWProxHitbox()
 {
-	if ((characterState == ECharacterState::VE_Back && !isFlipped) || (characterState == ECharacterState::VE_Forward && isFlipped))
+	if ((characterState == ECharacterState::VE_Back && isFlipped) || (characterState == ECharacterState::VE_Forward && !isFlipped))
 	{
 		characterState = ECharacterState::VE_Block;
 	}
@@ -409,6 +441,8 @@ void ACyberpunkSyndicatesCharacter::TakeDamage(float _damageAmount, float _stunT
 
 		stunTime = _stunTime;
 
+		//PlayDamageSoundEffect();
+
 		if (stunTime > 0.0f)
 		{		
 			characterState = ECharacterState::VE_HitStun;
@@ -425,7 +459,7 @@ void ACyberpunkSyndicatesCharacter::TakeDamage(float _damageAmount, float _stunT
 	}
 	else
 	{
-		float reducedDamage = _damageAmount * 0.01f;
+		float reducedDamage = _damageAmount * NULL;
 		playerHealth -= reducedDamage;
 
 		stunTime = _blockstunTime;
@@ -448,14 +482,16 @@ void ACyberpunkSyndicatesCharacter::TakeDamage(float _damageAmount, float _stunT
 		PerformPushback(_pushbackAmount, 0.0f, true);
 	}
 
-	if (playerHealth < 0.00f)
+	if (playerHealth <= 0.00f)
 	{
 		playerHealth = 0.00f;
+		otherPlayer->WinRound();
 	}
 	else if (playerHealth > 0.00f && playerHealth <= 0.30f)
 	{
 		EnterRage();
 	}
+
 }
 
 void ACyberpunkSyndicatesCharacter::StartStun()
@@ -530,6 +566,31 @@ void ACyberpunkSyndicatesCharacter::StartCommand(FString _commandName)
 	}
 }
 
+/*
+void ACyberpunkSyndicatesCharacter::SetHealth(float _health)
+{
+	playerHealth = _health;
+}
+*/
+
+void ACyberpunkSyndicatesCharacter::WinRound()
+{
+	otherPlayer->hasLostRound = true;
+	++roundsWon;
+
+	NotifyRoundEnd();
+	UpdateHUDRoundIcons();
+	
+}
+
+void ACyberpunkSyndicatesCharacter::WinMatch()
+{
+	canMove = false;
+	canAttack = false;
+	hasWonMatch = true;
+}
+
+//called every frame
 void ACyberpunkSyndicatesCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);

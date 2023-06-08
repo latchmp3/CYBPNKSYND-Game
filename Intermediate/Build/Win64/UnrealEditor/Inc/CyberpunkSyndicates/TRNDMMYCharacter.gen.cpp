@@ -37,7 +37,6 @@ void EmptyLinkFunctionForGeneratedCodeTRNDMMYCharacter() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATRNDMMYCharacter_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n * \n */" },
 		{ "HideCategories", "Navigation" },
 		{ "IncludePath", "TRNDMMYCharacter.h" },
 		{ "ModuleRelativePath", "TRNDMMYCharacter.h" },
@@ -79,9 +78,9 @@ void EmptyLinkFunctionForGeneratedCodeTRNDMMYCharacter() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_TRNDMMYCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ATRNDMMYCharacter, ATRNDMMYCharacter::StaticClass, TEXT("ATRNDMMYCharacter"), &Z_Registration_Info_UClass_ATRNDMMYCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATRNDMMYCharacter), 274031015U) },
+		{ Z_Construct_UClass_ATRNDMMYCharacter, ATRNDMMYCharacter::StaticClass, TEXT("ATRNDMMYCharacter"), &Z_Registration_Info_UClass_ATRNDMMYCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATRNDMMYCharacter), 1856147848U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_TRNDMMYCharacter_h_2737999393(TEXT("/Script/CyberpunkSyndicates"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_TRNDMMYCharacter_h_2756328953(TEXT("/Script/CyberpunkSyndicates"),
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_TRNDMMYCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_TRNDMMYCharacter_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

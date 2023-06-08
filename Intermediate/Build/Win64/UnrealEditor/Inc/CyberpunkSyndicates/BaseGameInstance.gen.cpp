@@ -37,14 +37,14 @@ void EmptyLinkFunctionForGeneratedCodeBaseGameInstance() {}
 		static const UECodeGen_Private::FEnumParams EnumParams;
 	};
 	const UECodeGen_Private::FEnumeratorParam Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass_Statics::Enumerators[] = {
-		{ "ECharacterClass::VE_TRNDMMY", (int64)ECharacterClass::VE_TRNDMMY },
+		{ "ECharacterClass::E_TRNDMMY", (int64)ECharacterClass::E_TRNDMMY },
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass_Statics::Enum_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+		{ "E_TRNDMMY.DisplayName", "Training Dummy" },
+		{ "E_TRNDMMY.Name", "ECharacterClass::E_TRNDMMY" },
 		{ "ModuleRelativePath", "BaseGameInstance.h" },
-		{ "VE_TRNDMMY.DisplayName", "Training Dummy" },
-		{ "VE_TRNDMMY.Name", "ECharacterClass::VE_TRNDMMY" },
 	};
 #endif
 	const UECodeGen_Private::FEnumParams Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass_Statics::EnumParams = {
@@ -92,6 +92,14 @@ void EmptyLinkFunctionForGeneratedCodeBaseGameInstance() {}
 #endif
 		static const UECodeGen_Private::FEnumPropertyParams NewProp_P2CharacterClass;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_roundTime_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_roundTime;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_numRounds_MetaData[];
+#endif
+		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_numRounds;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_isDeviceShared_MetaData[];
 #endif
 		static void NewProp_isDeviceShared_SetBit(void* Obj);
@@ -117,7 +125,7 @@ void EmptyLinkFunctionForGeneratedCodeBaseGameInstance() {}
 		{ "ModuleRelativePath", "BaseGameInstance.h" },
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P1CharacterClass = { "P1CharacterClass", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UBaseGameInstance, P1CharacterClass), Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass, METADATA_PARAMS(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P1CharacterClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P1CharacterClass_MetaData)) }; // 4224459901
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P1CharacterClass = { "P1CharacterClass", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UBaseGameInstance, P1CharacterClass), Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass, METADATA_PARAMS(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P1CharacterClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P1CharacterClass_MetaData)) }; // 4191807639
 	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass_MetaData[] = {
@@ -125,7 +133,25 @@ void EmptyLinkFunctionForGeneratedCodeBaseGameInstance() {}
 		{ "ModuleRelativePath", "BaseGameInstance.h" },
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass = { "P2CharacterClass", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UBaseGameInstance, P2CharacterClass), Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass, METADATA_PARAMS(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass_MetaData)) }; // 4224459901
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass = { "P2CharacterClass", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UBaseGameInstance, P2CharacterClass), Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass, METADATA_PARAMS(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass_MetaData)) }; // 4191807639
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_roundTime_MetaData[] = {
+		{ "Category", "GameMode Settings" },
+		{ "Comment", "//default round timer for each round\n" },
+		{ "ModuleRelativePath", "BaseGameInstance.h" },
+		{ "ToolTip", "default round timer for each round" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_roundTime = { "roundTime", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UBaseGameInstance, roundTime), METADATA_PARAMS(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_roundTime_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_roundTime_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_numRounds_MetaData[] = {
+		{ "Category", "GameMode Settings" },
+		{ "Comment", "//number of rounds in set\n" },
+		{ "ModuleRelativePath", "BaseGameInstance.h" },
+		{ "ToolTip", "number of rounds in set" },
+	};
+#endif
+	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_numRounds = { "numRounds", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UBaseGameInstance, numRounds), METADATA_PARAMS(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_numRounds_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_numRounds_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_isDeviceShared_MetaData[] = {
 		{ "Category", "Controller" },
@@ -144,6 +170,8 @@ void EmptyLinkFunctionForGeneratedCodeBaseGameInstance() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P1CharacterClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass_Underlying,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_P2CharacterClass,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_roundTime,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_numRounds,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseGameInstance_Statics::NewProp_isDeviceShared,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UBaseGameInstance_Statics::StaticCppClassTypeInfo = {
@@ -183,12 +211,12 @@ void EmptyLinkFunctionForGeneratedCodeBaseGameInstance() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_Statics::EnumInfo[] = {
-		{ ECharacterClass_StaticEnum, TEXT("ECharacterClass"), &Z_Registration_Info_UEnum_ECharacterClass, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 4224459901U) },
+		{ ECharacterClass_StaticEnum, TEXT("ECharacterClass"), &Z_Registration_Info_UEnum_ECharacterClass, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 4191807639U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UBaseGameInstance, UBaseGameInstance::StaticClass, TEXT("UBaseGameInstance"), &Z_Registration_Info_UClass_UBaseGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseGameInstance), 2310643473U) },
+		{ Z_Construct_UClass_UBaseGameInstance, UBaseGameInstance::StaticClass, TEXT("UBaseGameInstance"), &Z_Registration_Info_UClass_UBaseGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseGameInstance), 2303536500U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_3462745715(TEXT("/Script/CyberpunkSyndicates"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_1883044187(TEXT("/Script/CyberpunkSyndicates"),
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_BaseGameInstance_h_Statics::EnumInfo));

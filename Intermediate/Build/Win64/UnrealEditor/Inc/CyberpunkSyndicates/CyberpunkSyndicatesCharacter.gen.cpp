@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeCyberpunkSyndicatesCharacter() {}
 	CYBERPUNKSYNDICATES_API UClass* Z_Construct_UClass_ACyberpunkSyndicatesCharacter();
 	ENGINE_API UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+	CYBERPUNKSYNDICATES_API UEnum* Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FTransform();
 // End Cross Module References
@@ -280,6 +281,20 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		}
 		return Z_Registration_Info_UScriptStruct_InputInfo.InnerSingleton;
 	}
+	DEFINE_FUNCTION(ACyberpunkSyndicatesCharacter::execWinMatch)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->WinMatch();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(ACyberpunkSyndicatesCharacter::execWinRound)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->WinRound();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ACyberpunkSyndicatesCharacter::execStartCommand)
 	{
 		P_GET_PROPERTY(FStrProperty,Z_Param__commandName);
@@ -363,6 +378,26 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 	{
 		ProcessEvent(FindFunctionChecked(NAME_ACyberpunkSyndicatesCharacter_EnterRage),NULL);
 	}
+	static FName NAME_ACyberpunkSyndicatesCharacter_NotifyRoundEnd = FName(TEXT("NotifyRoundEnd"));
+	void ACyberpunkSyndicatesCharacter::NotifyRoundEnd()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_ACyberpunkSyndicatesCharacter_NotifyRoundEnd),NULL);
+	}
+	static FName NAME_ACyberpunkSyndicatesCharacter_NotifyRoundStart = FName(TEXT("NotifyRoundStart"));
+	void ACyberpunkSyndicatesCharacter::NotifyRoundStart()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_ACyberpunkSyndicatesCharacter_NotifyRoundStart),NULL);
+	}
+	static FName NAME_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect = FName(TEXT("PlayDamageSoundEffect"));
+	void ACyberpunkSyndicatesCharacter::PlayDamageSoundEffect()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect),NULL);
+	}
+	static FName NAME_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons = FName(TEXT("UpdateHUDRoundIcons"));
+	void ACyberpunkSyndicatesCharacter::UpdateHUDRoundIcons()
+	{
+		ProcessEvent(FindFunctionChecked(NAME_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons),NULL);
+	}
 	void ACyberpunkSyndicatesCharacter::StaticRegisterNativesACyberpunkSyndicatesCharacter()
 	{
 		UClass* Class = ACyberpunkSyndicatesCharacter::StaticClass();
@@ -376,6 +411,8 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 			{ "StopBlocking", &ACyberpunkSyndicatesCharacter::execStopBlocking },
 			{ "StopCrouch", &ACyberpunkSyndicatesCharacter::execStopCrouch },
 			{ "TakeDamage", &ACyberpunkSyndicatesCharacter::execTakeDamage },
+			{ "WinMatch", &ACyberpunkSyndicatesCharacter::execWinMatch },
+			{ "WinRound", &ACyberpunkSyndicatesCharacter::execWinRound },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -516,6 +553,72 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_EnterRage_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ACyberpunkSyndicatesCharacter, nullptr, "NotifyRoundEnd", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08080800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ACyberpunkSyndicatesCharacter, nullptr, "NotifyRoundStart", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08080800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ACyberpunkSyndicatesCharacter, nullptr, "PlayDamageSoundEffect", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08080800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -695,6 +798,72 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ACyberpunkSyndicatesCharacter, nullptr, "UpdateHUDRoundIcons", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x08080800, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ACyberpunkSyndicatesCharacter, nullptr, "WinMatch", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ACyberpunkSyndicatesCharacter, nullptr, "WinRound", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ACyberpunkSyndicatesCharacter);
 	UClass* Z_Construct_UClass_ACyberpunkSyndicatesCharacter_NoRegister()
 	{
@@ -718,6 +887,11 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 #endif
 		static const UECodeGen_Private::FArrayPropertyParams NewProp_characterCommands;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_isPlayerOne_MetaData[];
+#endif
+		static void NewProp_isPlayerOne_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_isPlayerOne;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_hasReleasedAxisInput_MetaData[];
 #endif
 		static void NewProp_hasReleasedAxisInput_SetBit(void* Obj);
@@ -731,14 +905,14 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_otherPlayer;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_isPlayerOne_MetaData[];
-#endif
-		static void NewProp_isPlayerOne_SetBit(void* Obj);
-		static const UECodeGen_Private::FBoolPropertyParams NewProp_isPlayerOne;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_hurtbox_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_hurtbox;
+		static const UECodeGen_Private::FBytePropertyParams NewProp_characterClass_Underlying;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_characterClass_MetaData[];
+#endif
+		static const UECodeGen_Private::FEnumPropertyParams NewProp_characterClass;
 		static const UECodeGen_Private::FBytePropertyParams NewProp_characterState_Underlying;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_characterState_MetaData[];
@@ -749,6 +923,11 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 #endif
 		static void NewProp_canMove_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_canMove;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_isCrouching_MetaData[];
+#endif
+		static void NewProp_isCrouching_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_isCrouching;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_stunTime_MetaData[];
 #endif
@@ -774,6 +953,15 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_playerHealth_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_playerHealth;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_roundsWon_MetaData[];
+#endif
+		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_roundsWon;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_canAttack_MetaData[];
+#endif
+		static void NewProp_canAttack_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_canAttack;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_lpPressed_MetaData[];
 #endif
@@ -804,6 +992,26 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 #endif
 		static void NewProp_hasAttackHit_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_hasAttackHit;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_hasLandedThrow_MetaData[];
+#endif
+		static void NewProp_hasLandedThrow_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_hasLandedThrow;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_isReadyForEntrance_MetaData[];
+#endif
+		static void NewProp_isReadyForEntrance_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_isReadyForEntrance;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_hasLostRound_MetaData[];
+#endif
+		static void NewProp_hasLostRound_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_hasLostRound;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_hasWonMatch_MetaData[];
+#endif
+		static void NewProp_hasWonMatch_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_hasWonMatch;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -818,12 +1026,18 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_CheckInputBufferForCommand, "CheckInputBufferForCommand" }, // 3976128247
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_CollidedWProxHitbox, "CollidedWProxHitbox" }, // 3966953579
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_EnterRage, "EnterRage" }, // 1668387997
+		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundEnd, "NotifyRoundEnd" }, // 3167071489
+		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_NotifyRoundStart, "NotifyRoundStart" }, // 19599558
+		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_PlayDamageSoundEffect, "PlayDamageSoundEffect" }, // 4077274766
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_StartBlocking, "StartBlocking" }, // 2002923832
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_StartCommand, "StartCommand" }, // 234375280
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_StartCrouch, "StartCrouch" }, // 3016993379
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_StopBlocking, "StopBlocking" }, // 2768525146
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_StopCrouch, "StopCrouch" }, // 3218737422
 		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_TakeDamage, "TakeDamage" }, // 4167231839
+		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_UpdateHUDRoundIcons, "UpdateHUDRoundIcons" }, // 713751587
+		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinMatch, "WinMatch" }, // 3677075826
+		{ &Z_Construct_UFunction_ACyberpunkSyndicatesCharacter_WinRound, "WinRound" }, // 3511741884
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::Class_MetaDataParams[] = {
@@ -850,6 +1064,19 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 	};
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterCommands = { "characterCommands", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ACyberpunkSyndicatesCharacter, characterCommands), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterCommands_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterCommands_MetaData)) }; // 4182804762
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_MetaData[] = {
+		{ "Category", "Input Stack" },
+		{ "Comment", "//Is character conntrolled by P1?\n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "Is character conntrolled by P1?" },
+	};
+#endif
+	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_SetBit(void* Obj)
+	{
+		((ACyberpunkSyndicatesCharacter*)Obj)->isPlayerOne = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne = { "isPlayerOne", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasReleasedAxisInput_MetaData[] = {
 		{ "Category", "Input Stack" },
@@ -880,25 +1107,22 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_otherPlayer = { "otherPlayer", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ACyberpunkSyndicatesCharacter, otherPlayer), Z_Construct_UClass_ACyberpunkSyndicatesCharacter_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_otherPlayer_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_otherPlayer_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_MetaData[] = {
-		{ "Category", "Input Stack" },
-		{ "Comment", "//Is character conntrolled by P1?\n" },
-		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
-		{ "ToolTip", "Is character conntrolled by P1?" },
-	};
-#endif
-	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_SetBit(void* Obj)
-	{
-		((ACyberpunkSyndicatesCharacter*)Obj)->isPlayerOne = 1;
-	}
-	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne = { "isPlayerOne", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne_MetaData)) };
-#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hurtbox_MetaData[] = {
 		{ "Category", "Hitbox" },
 		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hurtbox = { "hurtbox", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ACyberpunkSyndicatesCharacter, hurtbox), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hurtbox_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hurtbox_MetaData)) };
+	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterClass_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterClass_MetaData[] = {
+		{ "Category", "Character Details" },
+		{ "Comment", "//current class of character\n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "current class of character" },
+	};
+#endif
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterClass = { "characterClass", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ACyberpunkSyndicatesCharacter, characterClass), Z_Construct_UEnum_CyberpunkSyndicates_ECharacterClass, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterClass_MetaData)) }; // 4191807639
 	const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterState_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, nullptr, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterState_MetaData[] = {
@@ -922,6 +1146,19 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		((ACyberpunkSyndicatesCharacter*)Obj)->canMove = 1;
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canMove = { "canMove", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canMove_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canMove_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canMove_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isCrouching_MetaData[] = {
+		{ "Category", "Movement" },
+		{ "Comment", "//is the character crouching?\n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "is the character crouching?" },
+	};
+#endif
+	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isCrouching_SetBit(void* Obj)
+	{
+		((ACyberpunkSyndicatesCharacter*)Obj)->isCrouching = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isCrouching = { "isCrouching", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isCrouching_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isCrouching_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isCrouching_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_stunTime_MetaData[] = {
 		{ "Category", "Movement" },
@@ -974,6 +1211,26 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_playerHealth = { "playerHealth", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ACyberpunkSyndicatesCharacter, playerHealth), METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_playerHealth_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_playerHealth_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_roundsWon_MetaData[] = {
+		{ "Category", "Game Logic" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+	};
+#endif
+	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_roundsWon = { "roundsWon", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ACyberpunkSyndicatesCharacter, roundsWon), METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_roundsWon_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_roundsWon_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canAttack_MetaData[] = {
+		{ "Category", "Attacks" },
+		{ "Comment", "//can player use attacks\n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "can player use attacks" },
+	};
+#endif
+	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canAttack_SetBit(void* Obj)
+	{
+		((ACyberpunkSyndicatesCharacter*)Obj)->canAttack = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canAttack = { "canAttack", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canAttack_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canAttack_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canAttack_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_lpPressed_MetaData[] = {
 		{ "Category", "Attacks" },
@@ -1052,31 +1309,92 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		((ACyberpunkSyndicatesCharacter*)Obj)->hasAttackHit = 1;
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasAttackHit = { "hasAttackHit", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasAttackHit_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasAttackHit_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasAttackHit_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLandedThrow_MetaData[] = {
+		{ "Category", "Attacks" },
+		{ "Comment", "//Throw landed?\n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "Throw landed?" },
+	};
+#endif
+	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLandedThrow_SetBit(void* Obj)
+	{
+		((ACyberpunkSyndicatesCharacter*)Obj)->hasLandedThrow = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLandedThrow = { "hasLandedThrow", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLandedThrow_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLandedThrow_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLandedThrow_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isReadyForEntrance_MetaData[] = {
+		{ "Category", "Animations" },
+		{ "Comment", "//is character ready to play entrance anim?\n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "is character ready to play entrance anim?" },
+	};
+#endif
+	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isReadyForEntrance_SetBit(void* Obj)
+	{
+		((ACyberpunkSyndicatesCharacter*)Obj)->isReadyForEntrance = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isReadyForEntrance = { "isReadyForEntrance", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isReadyForEntrance_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isReadyForEntrance_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isReadyForEntrance_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLostRound_MetaData[] = {
+		{ "Category", "Animations" },
+		{ "Comment", "// determines loser of round \n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "determines loser of round" },
+	};
+#endif
+	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLostRound_SetBit(void* Obj)
+	{
+		((ACyberpunkSyndicatesCharacter*)Obj)->hasLostRound = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLostRound = { "hasLostRound", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLostRound_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLostRound_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLostRound_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasWonMatch_MetaData[] = {
+		{ "Category", "Animations" },
+		{ "Comment", "// determines winner of round \n" },
+		{ "ModuleRelativePath", "CyberpunkSyndicatesCharacter.h" },
+		{ "ToolTip", "determines winner of round" },
+	};
+#endif
+	void Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasWonMatch_SetBit(void* Obj)
+	{
+		((ACyberpunkSyndicatesCharacter*)Obj)->hasWonMatch = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasWonMatch = { "hasWonMatch", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(ACyberpunkSyndicatesCharacter), &Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasWonMatch_SetBit, METADATA_PARAMS(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasWonMatch_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasWonMatch_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_inputBuffer_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_inputBuffer,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterCommands_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterCommands,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasReleasedAxisInput,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_maxDistanceApart,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_otherPlayer,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isPlayerOne,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hurtbox,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterClass_Underlying,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterClass,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterState_Underlying,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_characterState,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canMove,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isCrouching,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_stunTime,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_gravityScale,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_scale,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_transform,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isFlipped,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_playerHealth,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_roundsWon,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_canAttack,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_lpPressed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_rpPressed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_lkPressed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_rkPressed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_wasBlitzUsed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasAttackHit,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLandedThrow,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_isReadyForEntrance,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasLostRound,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::NewProp_hasWonMatch,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ACyberpunkSyndicatesCharacter_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ACyberpunkSyndicatesCharacter>::IsAbstract,
@@ -1123,9 +1441,9 @@ template<> CYBERPUNKSYNDICATES_API UScriptStruct* StaticStruct<FInputInfo>()
 		{ FInputInfo::StaticStruct, Z_Construct_UScriptStruct_FInputInfo_Statics::NewStructOps, TEXT("InputInfo"), &Z_Registration_Info_UScriptStruct_InputInfo, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FInputInfo), 3516994199U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ACyberpunkSyndicatesCharacter, ACyberpunkSyndicatesCharacter::StaticClass, TEXT("ACyberpunkSyndicatesCharacter"), &Z_Registration_Info_UClass_ACyberpunkSyndicatesCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACyberpunkSyndicatesCharacter), 4289228210U) },
+		{ Z_Construct_UClass_ACyberpunkSyndicatesCharacter, ACyberpunkSyndicatesCharacter::StaticClass, TEXT("ACyberpunkSyndicatesCharacter"), &Z_Registration_Info_UClass_ACyberpunkSyndicatesCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACyberpunkSyndicatesCharacter), 2100331298U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_2829149244(TEXT("/Script/CyberpunkSyndicates"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_3545572897(TEXT("/Script/CyberpunkSyndicates"),
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_Statics::ClassInfo),
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_Statics::ScriptStructInfo),
 		Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CyberpunkSyndicates_Source_CyberpunkSyndicates_CyberpunkSyndicatesCharacter_h_Statics::EnumInfo));

@@ -11,7 +11,8 @@ enum class EHitboxEnum : uint8
 {
 	HB_PROXIMITY	UMETA(DisplayName = "Proximity"),
 	HB_ACTIVE		UMETA(DisplayName = "Active"),
-	HB_HURTBOX		UMETA(DisplayName = "Hurtbox")
+	HB_HURTBOX		UMETA(DisplayName = "Hurtbox"),
+	HB_THROW		UMETA(DisplayName = "Throw")
 };
 
 UCLASS()
